@@ -176,6 +176,12 @@
         },
         "bonus": {
           "selector": [
+            ".layui-row.layui-userdetails.layui-poll-con.layui-margin-bottom table tbody td:eq(16)"
+          ],
+          "filters": [ "query.html()" ]
+        },
+        "seedingPoints": {
+          "selector": [
             ".layui-row.layui-userdetails.layui-poll-con.layui-margin-bottom table tbody td:eq(8)"
           ],
           "filters": [ "query.html()" ]
