@@ -4,14 +4,71 @@
   "description": "music",
   "url": "https://redacted.ch/",
   "icon": "https://redacted.ch/favicon.ico",
-  "tags": ["音乐"],
+  "tags": [
+    "音乐"
+  ],
   "schema": "GazelleJSONAPI",
   "host": "redacted.ch",
-  "collaborator": ["ylxb2016", "enigamz"],
+  "levelRequirements": [
+    {
+      "level": 1,
+      "name": "Member",
+      "interval": "1",
+      "uploaded": "10GB",
+      "ratio": "0.65",
+      "privilege": "Can edit collages"
+    },
+    {
+      "level": 2,
+      "name": "Power User",
+      "interval": "2",
+      "uploaded": "25GB",
+      "ratio": "0.65",
+      "privilege": "uploaded at least 5 torrents,can access notifications and collage subscriptions, create new collages, get a personal collage, access to the Power User & Invites forums, can create forum polls, use the artist and personal Collector features, can access profile page stat graphs, and immunity from inactivity disabling."
+    },
+    {
+      "level": 3,
+      "name": "Elite",
+      "interval": "4",
+      "uploaded": "100GB",
+      "ratio": "0.65",
+      "seedingPoints": "150000",
+      "privilege": "uploaded at least 50 torrents, Access to the Elite forum, Top 10 filters, a second personal collage, profile album, and torrent editing privileges."
+    },
+    {
+      "level": 4,
+      "name": "Torrent Master",
+      "interval": "8",
+      "uploaded": "500GB",
+      "ratio": "0.65",
+      "privilege": "uploaded at least 500 torrents, Access to the Torrent Master forum, earns custom title, a third personal collage, the ability to omit their username from personal collage names, and unlimited invites."
+    },
+    {
+      "level": 5,
+      "name": "Power TM",
+      "interval": "8",
+      "uploaded": "500GB",
+      "ratio": "0.65",
+      "privilege": "uploaded at least 500 torrents,Everything Torrent Master gets plus a fourth personal collage."
+    },
+    {
+      "level": 6,
+      "name": "Elite TM",
+      "interval": "8",
+      "uploaded": "500GB",
+      "ratio": "0.65",
+      "privilege": "uploaded at least 500 torrents,Everything Power TM gets plus a fifth personal collage."
+    }
+  ],
+  "collaborator": [
+    "ylxb2016",
+    "enigamz"
+  ],
   "searchEntryConfig": {
     "skipIMDbId": true
   },
-  "searchEntry": [{
+  "searchEntry": [
+    {
       "name": "all",
       "enabled": true
     },
@@ -57,12 +114,16 @@
       "dataType": "json",
       "fields": {
         "seedingSize": {
-          "selector": ["response.seedingsize"],
-          "filters": ["query.replace(/,/g,'').sizeToNumber()"]
+          "selector": [
+            "response.seedingsize"
+          ],
+          "filters": [
+            "query.replace(/,/g,'').sizeToNumber()"
+          ]
         },
         "bonus": {
-	      "value":"N/A"
-	    }
+          "value": "N/A"
+        }
       }
     }
   },
