@@ -4,26 +4,90 @@
   "description": "",
   "icon": "https://www.morethantv.me/favicon.ico",
   "schema": "Common",
-  "tags": ["电视剧", "剧集"],
+  "tags": [
+    "电视剧",
+    "剧集"
+  ],
   "url": "https://www.morethantv.me",
   "collaborator": "luckiestone",
   "host": "www.morethantv.me",
+  "levelRequirements": [
+    {
+      "level": 1,
+      "name": "Grip",
+      "interval": "2",
+      "uploaded": "10GB",
+      "privilege": "Request Creation,Bookmarks,Poll Making,Notifications Access."
+    },
+    {
+      "level": 2,
+      "name": "Key Grip",
+      "interval": "4",
+      "uploaded": "200GB",
+      "privilege": "Upload privileges,Subscription, Creation & Personal Collage Access,Top 10 Access,Advanced Search Access."
+    },
+    {
+      "level": 3,
+      "name": "Camera Operator",
+      "interval": "8",
+      "uploaded": "500GB",
+      "privilege": "Advanced top 10 Access,Invite Forum Access,View Site Stats,Can Add Tags,Can Vote on Tags."
+    },
+    {
+      "level": 4,
+      "name": "Boom Operator",
+      "interval": "12",
+      "uploaded": "1000GB",
+      "privilege": "10 Checked Uploads*; 5 Forum Posts.Boom Operator Restricted forum;Can make/delete private upload templates;Can purchase invites from bonus shop."
+    },
+    {
+      "level": 5,
+      "name": "Gaffer",
+      "interval": "24",
+      "uploaded": "2000GB",
+      "privilege": "100 Checked Uploads*; 10 Forum Posts.Gaffer Restricted forum；Can send invites while site is past user limit."
+    },
+    {
+      "level": 6,
+      "name": "Engineer",
+      "interval": "48",
+      "uploaded": "3000GB",
+      "privilege": "500 Checked Uploads*; 25 Forum Posts.Engineer Restricted forum；FREE Invites (Send a staff PM for us to credit your account)；Immune from inactivity disablement."
+    }
+  ],
   "formerHosts": [
     "www.morethan.tv"
   ],
-  "plugins": [{
-    "name": "种子详情页面",
-    "pages": ["/torrents.php"],
-    "scripts": ["/schemas/NexusPHP/common.js", "/schemas/Common/details.js"]
-  }, {
-    "name": "种子列表",
-    "pages": ["/torrents/browse", "/show/(\\d+)/$","/collages.php"],
-    "scripts": ["/schemas/NexusPHP/common.js", "/schemas/Common/torrents.js"]
-  }],
-  "searchEntry": [{
-    "name": "全部",
-    "enabled": true
-  }],
+  "plugins": [
+    {
+      "name": "种子详情页面",
+      "pages": [
+        "/torrents.php"
+      ],
+      "scripts": [
+        "/schemas/NexusPHP/common.js",
+        "/schemas/Common/details.js"
+      ]
+    },
+    {
+      "name": "种子列表",
+      "pages": [
+        "/torrents/browse",
+        "/show/(\\d+)/$",
+        "/collages.php"
+      ],
+      "scripts": [
+        "/schemas/NexusPHP/common.js",
+        "/schemas/Common/torrents.js"
+      ]
+    }
+  ],
+  "searchEntry": [
+    {
+      "name": "全部",
+      "enabled": true
+    }
+  ],
   "searchEntryConfig": {
     "page": "torrents/browse?searchtext=$key$",
     "name": "全部",
@@ -31,33 +95,51 @@
     "resultSelector": "table.torrent_table",
     "dataRowSelector": "> tbody > tr:not(:first-child)",
     "fieldIndex": {
-	    "title": 1,
-	    "link": 1,
-	    "url": 1,
-        "time": 3,
-        "size": 4,
-        "author": 8,
-        "seeders": 6,
-        "leechers": 7,
-        "completed": 5
-	},
-	"fieldSelector": {
-	  "title": {
-		"selector": ["a.overlay_torrent"],
-        "filters": ["query.text()"]
-	  },
-	  "link": {
-		"selector": ["a.overlay_torrent"],
-        "filters": ["query.attr('href')", "'https://www.morethantv.me/'+query"]
-	  },
-	  "url": {
-		"selector": ["a[title='Download Torrent']"],
-        "filters": ["query.attr('href')", "'https://www.morethantv.me/'+query"]
-	  },
-	  "time": {
-		"selector": ["span.time"],
-        "filters": ["dateTime(query.attr('title')).format()"]
-	  }
+      "title": 1,
+      "link": 1,
+      "url": 1,
+      "time": 3,
+      "size": 4,
+      "author": 8,
+      "seeders": 6,
+      "leechers": 7,
+      "completed": 5
+    },
+    "fieldSelector": {
+      "title": {
+        "selector": [
+          "a.overlay_torrent"
+        ],
+        "filters": [
+          "query.text()"
+        ]
+      },
+      "link": {
+        "selector": [
+          "a.overlay_torrent"
+        ],
+        "filters": [
+          "query.attr('href')",
+          "'https://www.morethantv.me/'+query"
+        ]
+      },
+      "url": {
+        "selector": [
+          "a[title='Download Torrent']"
+        ],
+        "filters": [
+          "query.attr('href')",
+          "'https://www.morethantv.me/'+query"
+        ]
+      },
+      "time": {
+        "selector": [
+          "span.time"
+        ],
+        "filters": [
+          "dateTime(query.attr('title')).format()"
+        ]
+      }
     }
   },
   "selectors": {
@@ -66,20 +148,36 @@
       "page": "/index.php",
       "fields": {
         "id": {
-          "selector": ["a.username[href*='user.php']:first"],
+          "selector": [
+            "a.username[href*='user.php']:first"
+          ],
           "attribute": "href",
-          "filters": ["query ? query.getQueryString('id'):''"]
+          "filters": [
+            "query ? query.getQueryString('id'):''"
+          ]
         },
         "name": {
-          "selector": ["a.username[href*='user.php']:first"]
+          "selector": [
+            "a.username[href*='user.php']:first"
+          ]
         },
         "messageCount": {
-          "selector": ["div.alert-bar > a[href*='inbox.php']", "div.alertbar > a[href*='inbox.php']"],
-          "filters": ["query.text().match(/(\\d+)/)", "(query && query.length>=2)?parseInt(query[1]):0"]
+          "selector": [
+            "div.alert-bar > a[href*='inbox.php']",
+            "div.alertbar > a[href*='inbox.php']"
+          ],
+          "filters": [
+            "query.text().match(/(\\d+)/)",
+            "(query && query.length>=2)?parseInt(query[1]):0"
+          ]
         },
         "isLogged": {
-          "selector": ["form[action='/logout']"],
-          "filters": ["query.length>0"]
+          "selector": [
+            "form[action='/logout']"
+          ],
+          "filters": [
+            "query.length>0"
+          ]
         }
       }
     },
@@ -88,56 +186,103 @@
       "fields": {
         "uploaded": {
           "selector": "ul.stats > li:contains('Uploaded')",
-          "filters": ["query.text().replace(/,/g,'').match(/Uploaded.+?([\\d.]+ ?[ZEPTGMK]?i?B)/)", "(query && query.length>=2)?(query[1]).sizeToNumber():null"]
+          "filters": [
+            "query.text().replace(/,/g,'').match(/Uploaded.+?([\\d.]+ ?[ZEPTGMK]?i?B)/)",
+            "(query && query.length>=2)?(query[1]).sizeToNumber():null"
+          ]
         },
         "downloaded": {
           "selector": "ul.stats > li:contains('Downloaded')",
-          "filters": ["query.text().replace(/,/g,'').match(/Downloaded.+?([\\d.]+ ?[ZEPTGMK]?i?B)/)", "(query && query.length>=2)?(query[1]).sizeToNumber():null"]
+          "filters": [
+            "query.text().replace(/,/g,'').match(/Downloaded.+?([\\d.]+ ?[ZEPTGMK]?i?B)/)",
+            "(query && query.length>=2)?(query[1]).sizeToNumber():null"
+          ]
         },
         "ratio": {
           "selector": "ul.stats > li:contains('Ratio:')",
-          "filters": ["query.text().replace(/,/g,'').match(/Ratio.+?([\\d.]+)/)", "(query && query.length>=2)?query[1]:null"]
+          "filters": [
+            "query.text().replace(/,/g,'').match(/Ratio.+?([\\d.]+)/)",
+            "(query && query.length>=2)?query[1]:null"
+          ]
         },
         "seeding": {
-          "selector": ["ul.stats > li:contains('Seeding:')"],
-          "filters": [ "query.text().replace(/,/g, '').match(/Seeding:.+?([\\d]+)/)", "(query && query.length>=2)?query[1]:null" ]
+          "selector": [
+            "ul.stats > li:contains('Seeding:')"
+          ],
+          "filters": [
+            "query.text().replace(/,/g, '').match(/Seeding:.+?([\\d]+)/)",
+            "(query && query.length>=2)?query[1]:null"
+          ]
         },
         "seedingSize": {
-          "selector": ["ul.stats > li:contains('Seeding Size:')"],
-          "filters": ["query.text().replace(/,/g,'').match(/Seeding Size:.+?([\\d.]+ ?[ZEPTGMK]?i?B)/)", "(query && query.length>=2)?(query[1]).sizeToNumber():0"]
+          "selector": [
+            "ul.stats > li:contains('Seeding Size:')"
+          ],
+          "filters": [
+            "query.text().replace(/,/g,'').match(/Seeding Size:.+?([\\d.]+ ?[ZEPTGMK]?i?B)/)",
+            "(query && query.length>=2)?(query[1]).sizeToNumber():0"
+          ]
         },
         "levelName": {
           "selector": "ul.stats > li:contains('Class:')",
-          "filters": ["query.text().match(/Class:.+?(.+)/)", "(query && query.length>=2)?query[1]:''"]
+          "filters": [
+            "query.text().match(/Class:.+?(.+)/)",
+            "(query && query.length>=2)?query[1]:''"
+          ]
         },
         "bonus": {
           "selector": "#stats_credits",
-          "filters": ["query.text()"]
+          "filters": [
+            "query.text()"
+          ]
         },
         "joinTime": {
-          "selector": ["ul.stats > li:contains('Joined:') > span"],
-          "filters": ["query.attr('title')||query.text()", "dateTime(query).isValid()?dateTime(query).valueOf():query"]
+          "selector": [
+            "ul.stats > li:contains('Joined:') > span"
+          ],
+          "filters": [
+            "query.attr('title')||query.text()",
+            "dateTime(query).isValid()?dateTime(query).valueOf():query"
+          ]
         }
       }
     },
     "common": {
-	  "page": "/torrents.php",
+      "page": "/torrents.php",
       "fields": {
         "downloadURL": {
-          "selector": ["tr[id*='torrentinfo'][class!='hidden']"],
-          "filters": ["query.prev().find(\"a[href*='action=download']\").attr('href')"]
+          "selector": [
+            "tr[id*='torrentinfo'][class!='hidden']"
+          ],
+          "filters": [
+            "query.prev().find(\"a[href*='action=download']\").attr('href')"
+          ]
         },
         "size": {
-          "selector": ["tr.group_torrent > td.nobr"],
-          "filters": ["query.text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)", "(query && query.length>1)?(query[1]).sizeToNumber():0"]
+          "selector": [
+            "tr.group_torrent > td.nobr"
+          ],
+          "filters": [
+            "query.text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)",
+            "(query && query.length>1)?(query[1]).sizeToNumber():0"
+          ]
         },
         "downloadURLs": {
-          "selector": ["a[href*='action=download']"],
-          "filters": ["query.toArray()"]
+          "selector": [
+            "a[href*='action=download']"
+          ],
+          "filters": [
+            "query.toArray()"
+          ]
         },
         "confirmSize": {
-          "selector": ["tr.group_torrent > td.nobr"],
-          "filters": ["query.text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)", "(query && query.length>1)?(query[1]).sizeToNumber():0"]
+          "selector": [
+            "tr.group_torrent > td.nobr"
+          ],
+          "filters": [
+            "query.text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)",
+            "(query && query.length>1)?(query[1]).sizeToNumber():0"
+          ]
         }
       }
     }
