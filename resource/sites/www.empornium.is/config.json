@@ -3,14 +3,65 @@
   "timezoneOffset": "+0000",
   "description": "EMP",
   "url": "https://www.empornium.is/",
-  "tags": ["Adult"],
+  "tags": [
+    "Adult"
+  ],
   "schema": "Common",
-  "plugins": [{
-    "name": "种子列表",
-    "pages": ["/torrents.php"],
-    "scripts": ["/schemas/NexusPHP/common.js", "/schemas/Common/torrents.js"]
-  }],
+  "plugins": [
+    {
+      "name": "种子列表",
+      "pages": [
+        "/torrents.php"
+      ],
+      "scripts": [
+        "/schemas/NexusPHP/common.js",
+        "/schemas/Common/torrents.js"
+      ]
+    }
+  ],
   "host": "www.empornium.is",
+  "levelRequirements": [
+    {
+      "level": 1,
+      "name": "Perv",
+      "interval": "1",
+      "uploaded": "10GB",
+      "ratio": "0.6",
+      "privilege": "can access top10 lists,can add and vote on tags,can use upload templates,can set forum signature (up to 128 characters)."
+    },
+    {
+      "level": 2,
+      "name": "Good Perv",
+      "interval": "4",
+      "uploaded": "25GB",
+      "ratio": "1.05",
+      "privilege": " can access site statistics,can create public upload templates,can create and vote in requests,can use the notifications system,can create collages,can add multiple tags at once,can see uploaders name in upload (unless forced hidden),can download zips of torrent files (from collages, and user pages),can play Slot Machine,can create polls in the forums,can bump threads in the forums,can set forum signature (up to 256 characters)."
+    },
+    {
+      "level": 3,
+      "name": "Great Perv",
+      "interval": "8",
+      "uploaded": "100GB",
+      "ratio": "1.05",
+      "privilege": "uploaded at least 5 torrents, can access the Invite forum,can set forum signature (up to 512 characters)."
+    },
+    {
+      "level": 4,
+      "name": "Sextreme Perv",
+      "interval": "13",
+      "uploaded": "1TB",
+      "ratio": "1.05",
+      "privilege": "uploaded at least 50 torrents, can set forum signature (up to 1024 characters)."
+    },
+    {
+      "level": 5,
+      "name": "Smut Peddler",
+      "interval": "26",
+      "uploaded": "10TB",
+      "ratio": "1.05",
+      "privilege": "uploaded at least 250 torrents,can set forum signature (up to 2048 characters)."
+    }
+  ],
   "formerHosts": [
     "www.empornium.me"
   ],
@@ -20,103 +71,182 @@
     "resultSelector": "table.torrent_table.grouping",
     "dataRowSelector": " > tbody > tr:not(:first-child)",
     "fieldIndex": {
-	    "category": 0,
-	    "title": 1,
-	    "link": 1,
-        "comments": 3,
-        "time": 4,
-        "size": 5,
-        "author": 9,
-        "seeders": 7,
-        "leechers": 8,
-        "completed": 6
-	},
-	"fieldSelector": {
-	  "category": {
-		"selector": ["div[title]"],
-        "filters": ["query.attr('title')"]
-	  },
-	  "title": {
-		"selector": ["a[onmouseout]"],
-        "filters": ["query.text()"]
-	  },
-	  "link": {
-		"selector": ["a[onmouseout]"],
-        "filters": ["query.attr('href')"]
-	  },
-	  "url": {
-		"selector": ["a[href*='action=download&id=']"],
-        "filters": ["query.attr('href')"]
-	  },
-	  "time": {
-		"selector": [""],
-        "filters": ["query.text()"]
-	  },
-	  "progress": {
-        "selector": ["a[title='Currently Seeding Torrent'], a[title='Previously Snatched Torrent']", "a[title='Previously Grabbed Torrent File']", ""],
+      "category": 0,
+      "title": 1,
+      "link": 1,
+      "comments": 3,
+      "time": 4,
+      "size": 5,
+      "author": 9,
+      "seeders": 7,
+      "leechers": 8,
+      "completed": 6
+    },
+    "fieldSelector": {
+      "category": {
+        "selector": [
+          "div[title]"
+        ],
+        "filters": [
+          "query.attr('title')"
+        ]
+      },
+      "title": {
+        "selector": [
+          "a[onmouseout]"
+        ],
+        "filters": [
+          "query.text()"
+        ]
+      },
+      "link": {
+        "selector": [
+          "a[onmouseout]"
+        ],
+        "filters": [
+          "query.attr('href')"
+        ]
+      },
+      "url": {
+        "selector": [
+          "a[href*='action=download&id=']"
+        ],
+        "filters": [
+          "query.attr('href')"
+        ]
+      },
+      "time": {
+        "selector": [
+          ""
+        ],
+        "filters": [
+          "query.text()"
+        ]
+      },
+      "progress": {
+        "selector": [
+          "a[title='Currently Seeding Torrent'], a[title='Previously Snatched Torrent']",
+          "a[title='Previously Grabbed Torrent File']",
+          ""
+        ],
         "switchFilters": [
-          ["100"],
-          ["0"],
-          ["null"]
+          [
+            "100"
+          ],
+          [
+            "0"
+          ],
+          [
+            "null"
+          ]
         ]
       },
       "status": {
-        "selector": ["a[title='Currently Seeding Torrent']", "a[title='Previously Snatched Torrent']", "a[title='Previously Grabbed Torrent File']"],
+        "selector": [
+          "a[title='Currently Seeding Torrent']",
+          "a[title='Previously Snatched Torrent']",
+          "a[title='Previously Grabbed Torrent File']"
+        ],
         "switchFilters": [
-          ["2"],
-          ["255"],
-          ["3"]
+          [
+            "2"
+          ],
+          [
+            "255"
+          ],
+          [
+            "3"
+          ]
         ]
       }
-	}
+    }
   },
-  "searchEntry": [{
-    "name": "全部",
-    "enabled": true
-  }],
-  "torrentTagSelectors": [{
-    "name": "Free",
-    "selector": "span[title='Unlimited Freeleech']"
-  }],
+  "searchEntry": [
+    {
+      "name": "全部",
+      "enabled": true
+    }
+  ],
+  "torrentTagSelectors": [
+    {
+      "name": "Free",
+      "selector": "span[title='Unlimited Freeleech']"
+    }
+  ],
   "selectors": {
     "userBaseInfo": {
       "page": "/index.php",
       "fields": {
-	    "id": {
-          "selector": ["a.username[href*='user.php']:first"],
+        "id": {
+          "selector": [
+            "a.username[href*='user.php']:first"
+          ],
           "attribute": "href",
-          "filters": ["query ? query.getQueryString('id'):''"]
+          "filters": [
+            "query ? query.getQueryString('id'):''"
+          ]
         },
         "name": {
           "selector": "a.username"
         },
         "isLogged": {
-          "selector": ["#nav_logout"],
-          "filters": ["query.length>0"]
+          "selector": [
+            "#nav_logout"
+          ],
+          "filters": [
+            "query.length>0"
+          ]
         },
         "messageCount": {
-          "selector": ["div.alertbar"],
-          "filters": ["(query && query.length>=1)?11:0"]
+          "selector": [
+            "div.alertbar"
+          ],
+          "filters": [
+            "(query && query.length>=1)?11:0"
+          ]
         },
         "seeding": {
-	      "selector": ["#nav_seeding_r"],
-          "filters": ["query.text().match(/(\\d+)/)", "(query && query.length>=2)?parseInt(query[1]):null"]
+          "selector": [
+            "#nav_seeding_r"
+          ],
+          "filters": [
+            "query.text().match(/(\\d+)/)",
+            "(query && query.length>=2)?parseInt(query[1]):null"
+          ]
         },
         "uploaded": {
-          "selector": ["td:contains('Up:') + td"],
-          "filters": ["query.text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)", "(query && query.length>=2)?(query[1]).sizeToNumber():null"]
+          "selector": [
+            "td:contains('Up:') + td"
+          ],
+          "filters": [
+            "query.text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)",
+            "(query && query.length>=2)?(query[1]).sizeToNumber():null"
+          ]
         },
         "downloaded": {
-          "selector": ["td:contains('Down:') + td"],
-          "filters": ["query.text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)", "(query && query.length>=2)?(query[1]).sizeToNumber():null"]
+          "selector": [
+            "td:contains('Down:') + td"
+          ],
+          "filters": [
+            "query.text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)",
+            "(query && query.length>=2)?(query[1]).sizeToNumber():null"
+          ]
         },
         "ratio": {
-          "selector": ["td:contains('Ratio:') + td"],
-          "filters": ["query.text()"]
+          "selector": [
+            "td:contains('Ratio:') + td"
+          ],
+          "filters": [
+            "query.text()"
+          ]
         },
         "bonus": {
-          "selector": ["td:contains('Credits:') + td"],
-          "filters": ["query.text()"]
+          "selector": [
+            "td:contains('Credits:') + td"
+          ],
+          "filters": [
+            "query.text()"
+          ]
         }
       }
     },
@@ -124,37 +254,67 @@
       "page": "/user.php?id=$user.id$",
       "fields": {
         "joinTime": {
-          "selector": ["li:contains('Joined:') > span.time"],
-          "filters": ["dateTime(query.attr('title')).valueOf()"]
+          "selector": [
+            "li:contains('Joined:') > span.time"
+          ],
+          "filters": [
+            "dateTime(query.attr('title')).valueOf()"
+          ]
         },
         "levelName": {
-          "selector": ["span.rank"],
-          "filters":  ["query.text()"]
+          "selector": [
+            "span.rank"
+          ],
+          "filters": [
+            "query.text()"
+          ]
         },
         "seedingSize": {
-	        "selector": ["ul.stats.nobullet > li:contains('Seeding Size:')"],
-	        "filters": ["query.text().replace('Seeding Size: ', '').replace(/,/g,'')","query.sizeToNumber()"]
+          "selector": [
+            "ul.stats.nobullet > li:contains('Seeding Size:')"
+          ],
+          "filters": [
+            "query.text().replace('Seeding Size: ', '').replace(/,/g,'')",
+            "query.sizeToNumber()"
+          ]
         }
       }
     },
     "common": {
-	  "page": "/torrents.php",
+      "page": "/torrents.php",
       "fields": {
         "size": {
-          "selector": ["#content > div > div:nth-child(4)  td:contains('iB')"],
-          "filters": ["query.parent().text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)", "(query && query.length>1)?(query[1]).sizeToNumber():0"]
+          "selector": [
+            "#content > div > div:nth-child(4)  td:contains('iB')"
+          ],
+          "filters": [
+            "query.parent().text().replace(/,/g,'').match(/([\\d.]+ ?[ZEPTGMK]?i?B)/)",
+            "(query && query.length>1)?(query[1]).sizeToNumber():0"
+          ]
         },
         "sayThanksButton": {
-          "selector": ["#thanksbutton"],
-          "filters": ["query"]
+          "selector": [
+            "#thanksbutton"
+          ],
+          "filters": [
+            "query"
+          ]
         },
         "downloadURLs": {
-          "selector": ["table.torrent_table a[href*='action=download&id='],a.button.blueButton"],
-          "filters": ["query.toArray()"]
+          "selector": [
+            "table.torrent_table a[href*='action=download&id='],a.button.blueButton"
+          ],
+          "filters": [
+            "query.toArray()"
+          ]
         },
         "confirmSize": {
-          "selector": ["table#torrent_table"],
-          "filters": ["query.find('td.nobr:contains(\\'iB\\')')"]
+          "selector": [
+            "table#torrent_table"
+          ],
+          "filters": [
+            "query.find('td.nobr:contains(\\'iB\\')')"
+          ]
         }
       }
     }
