@@ -4,9 +4,45 @@
   "description": "music",
   "url": "https://lztr.me/",
   "icon": "https://lztr.me/favicon.ico",
-  "tags": ["音乐"],
+  "tags": [
+    "音乐"
+  ],
   "schema": "Gazelle",
   "host": "lztr.me",
+  "levelRequirements": [
+    {
+      "level": 1,
+      "name": "Member",
+      "interval": "1",
+      "uploaded": "10GB",
+      "ratio": "0.7",
+      "privilege": "Downloaded at least 1 torrent.Can make requests, bookmarks, edit Collages, and can access the Top 10 *)."
+    },
+    {
+      "level": 2,
+      "name": "Power User",
+      "interval": "2",
+      "uploaded": "25GB",
+      "ratio": "1.05",
+      "privilege": "Uploaded at least 5 torrents.Receives invites, can access notifications, create new collages, access power user & invites forums."
+    },
+    {
+      "level": 3,
+      "name": "Elite ",
+      "interval": "4",
+      "uploaded": "100GB",
+      "ratio": "1.05",
+      "privilege": "Uploaded at least 50 torrents.Top 10 filters."
+    },
+    {
+      "level": 4,
+      "name": "Torrent Master",
+      "interval": "8",
+      "uploaded": "200GB",
+      "ratio": "1.05",
+      "privilege": "Uploaded at least 200 torrents. Can invite users even when invites are closed, Can send unlimited invites"
+    }
+  ],
   "collaborator": "ylxb2016",
   "supportedFeatures": {
     "imdbSearch": false,
